@@ -21,7 +21,10 @@
     <ClCompile Include="context switching.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="prac1.cpp">
+    <ClCompile Include="prac_mutex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="prac_atomic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
