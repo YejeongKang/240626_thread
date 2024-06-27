@@ -27,7 +27,7 @@
     <ClCompile Include="prac_atomic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="prac_alarm.cpp">
+    <ClCompile Include="prac_condition_variable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

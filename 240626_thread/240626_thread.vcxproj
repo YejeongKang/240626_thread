@@ -130,7 +130,7 @@
     <ClCompile Include="context switching.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="prac_alarm.cpp" />
+    <ClCompile Include="prac_condition_variable.cpp" />
     <ClCompile Include="prac_atomic.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>

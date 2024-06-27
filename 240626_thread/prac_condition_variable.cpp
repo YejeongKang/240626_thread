@@ -23,15 +23,19 @@ void timer(int sec) {
 
 		cv.notify_one();
 
-		uniqueLock.unlock();
-		
 		cout << "Thread released the lock." << endl;
 
+		uniqueLock.unlock();
 	}
 	else {
 
+		uniqueLock.lock();
+		
 		cout << "Thread could not acquire the lock." << endl;
+
+		uniqueLock.unlock();
 	}
+
 }
 
 void wait_for_alarm() {
