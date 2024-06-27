@@ -1,5 +1,6 @@
 #include <iostream>
 #include <thread>
+#include <mutex>
 
 using namespace std;
 
@@ -11,28 +12,39 @@ public:
 	void setBalance(int seed);
 	void deposit(int amount);
 	void withdraw(int amount);
+	int getBalance();
 
 private:
 	atomic<int> balance;
-	
+	mutable mutex mtx;
 };
+
 void BankAccount::setBalance(int seed) {
 	balance.store(seed);
 }
 void BankAccount::deposit(int amount) {
 	balance += amount;
-	cout << "계좌의 잔액은 " << balance << " 원 입니다." << endl;
-
+	//balance.fetch_add(amount);
+	mtx.lock();
+	cout << "Balance : " << balance << endl;
+	mtx.unlock();
 }
 void BankAccount::withdraw(int amount) {
 	balance -= amount;
-	cout << "계좌의 잔액은 " << balance << " 원 입니다." << endl;
-
+	//balance.fetch_add(-amount); 
+	mtx.lock();
+	cout << "Balance : " << balance << endl;
+	mtx.unlock();
 }
+int BankAccount::getBalance() {
+	return balance;
+}
+
 
 void setNum(BankAccount& ba, int seed) {
 	ba.setBalance(seed);
 }
+
 // count 횟수만큼 amount를 입금(deposit)
 void deposit_iter(BankAccount& ba, int amount, int count) {
 	for (int i = 0; i < count; i++) {
@@ -59,6 +71,8 @@ int main()
 	t0.join();
 	t1.join();
 	t2.join();
+
+	cout << "Final Balance : " << BA.getBalance();
 
 	return 0;
 }
